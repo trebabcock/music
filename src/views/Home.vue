@@ -10,13 +10,7 @@
           <Track
             v-for="track in allTracks"
             :key="track.id"
-            :title="track.title"
-            :artist="track.artist"
-            :album="track.album"
-            :duration="track.duration"
-            :cover_url="track.cover_url"
-            :file_name="track.file_name"
-            :id="track.id"
+            :track="track"
           ></Track>
         </div>
 
@@ -24,17 +18,13 @@
           <h1 class="text-3xl text-indigo-400 font-bold text-center mb-4">
             Queue
           </h1>
-          <Track
-            v-for="track in queueTracks"
-            :key="uuid(track)"
-            :title="track.title"
-            :artist="track.artist"
-            :album="track.album"
-            :duration="track.duration"
-            :cover_url="track.cover_url"
-            :file_name="track.file_name"
-            :id="track.id"
-          ></Track>
+          <div class="w-full h-full overflow-y-scroll flex flex-col space-y-2">
+            <Track
+              v-for="track in queueTracks"
+              :key="uuid(track)"
+              :track="track"
+            ></Track>
+          </div>
         </div>
         <!--<div class="w-96 mr-4">
           <h1 class="text-3xl text-indigo-400 font-bold text-center mb-4">
@@ -90,6 +80,7 @@
         </div>-->
       </div>
     </div>
+    <div class="h-1 bg-pink-400 shadow-lg"></div>
     <div
       class="
         bg-indigo-900
@@ -97,7 +88,7 @@
         justify-center
         items-center
         h-32
-        border-t-2 border-pink-400
+        shadow-lg
       "
     >
       <div
@@ -113,6 +104,7 @@
           bg-pink-400
           hover:bg-pink-300
           cursor-pointer
+          shadow-lg
         "
       >
         <font-awesome-icon
@@ -131,6 +123,7 @@
             text-pink-400
             hover:text-pink-300
             cursor-pointer
+            shadow-lg
           "
           icon="play-circle"
           size="4x"
@@ -144,6 +137,7 @@
             text-pink-400
             hover:text-pink-300
             cursor-pointer
+            shadow-lg
           "
           icon="pause-circle"
           size="4x"
@@ -162,6 +156,7 @@
           bg-pink-400
           hover:bg-pink-300
           cursor-pointer
+          shadow-lg
         "
       >
         <font-awesome-icon

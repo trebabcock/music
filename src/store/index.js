@@ -35,7 +35,7 @@ export default new Vuex.Store({
   actions: {
     populateTracks({ commit }) {
       let song1 = {
-        title: "We're in This together",
+        title: "We're in This Together",
         artist: "Nine Inch Nails",
         album: "The Fragile",
         duration: "7:16",
@@ -67,7 +67,17 @@ export default new Vuex.Store({
         id: 3,
       };
       commit("addTrack", song3);
-      //commit("addQueue", song1);
+      let song4 = {
+        title: "Thinking Of A Place",
+        artist: "The War on Drugs",
+        album: "A Deeper Understanding",
+        duration: "11:14",
+        cover_url:
+          "https://upload.wikimedia.org/wikipedia/en/a/a1/A_Deeper_Understanding.jpg",
+        file_name: "four.mp3",
+        id: 4,
+      };
+      commit("addTrack", song4);
     },
   },
   modules: {},

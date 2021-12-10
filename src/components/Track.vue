@@ -12,72 +12,37 @@
     "
   >
     <div class="flex justify-center items-center">
-      <img class="rounded-lg h-10 w-10" :src="cover_url" />
+      <img class="rounded-lg h-10 w-10" :src="track.cover_url" />
       <div class="flex flex-grow">
         <div class="flex flex-col px-2">
           <p class="text-sm font-bold text-purple-200">
-            {{ title }}
+            {{ track.title }}
           </p>
-          <p class="text-xs text-purple-300 font-bold">{{ artist }}</p>
+          <p class="text-xs text-purple-300 font-bold">{{ track.artist }}</p>
         </div>
       </div>
       <div class="flex flex-col justify-center items-end">
-        <p class="text-sm font-bold text-purple-300">{{ duration }}</p>
-        <p class="text-xs text-purple-300 font-bold">{{ album }}</p>
+        <p class="text-sm font-bold text-purple-300">{{ track.duration }}</p>
+        <p class="text-xs text-purple-300 font-bold">{{ track.album }}</p>
       </div>
       <div
-        @click.prevent.stop="handleClick($event, id)"
-        class="
-          flex flex-col
-          items-center
-          justify-center
-          h-10
-          w-6
-          ml-2
-          rounded
-          cursor-pointer
-          hover:bg-purple-400
-        "
+        class="flex flex-col items-center justify-center h-10 w-6 ml-2 rounded"
       >
-        <font-awesome-icon
-          class="m-auto antialiased text-purple-300"
-          icon="ellipsis-v"
-          size="lg"
-        />
+        <track-dropdown :track="track" />
       </div>
     </div>
-    <vue-simple-context-menu
-      :elementId="'myUniqueId'"
-      :options="options"
-      :ref="'vueSimpleContextMenu'"
-      @option-clicked="optionClicked"
-    />
   </div>
 </template>
 
 <script>
-import VueSimpleContextMenu from "vue-simple-context-menu";
+import TrackDropdown from "./TrackDropdown.vue";
 export default {
   name: "Track",
   props: {
-    title: String,
-    artist: String,
-    album: String,
-    duration: String,
-    cover_url: String,
-    file_name: String,
-    id: Number,
+    track: {},
   },
   components: {
-    VueSimpleContextMenu,
-  },
-  methods: {
-    handleClick(event, item) {
-      this.$refs.vueSimpleContextMenu.showMenu(event, item);
-    },
-    optionClicked(event) {
-      window.alert(JSON.stringify(event));
-    },
+    TrackDropdown,
   },
 };
 </script>
